@@ -53,7 +53,7 @@ var svg = d3.select("body").append("svg")
 
 
 d3.json("treeData.json", function(error, treeData) {
-  var root = treeData[0];
+  root = treeData[0];
   update(root);
 });
 
