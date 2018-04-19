@@ -53,7 +53,7 @@ var treemap = d3.tree().size([height, width]);
 // Assigns parent, children, height, depth
 var treeData = [];
 
-d3.json("treeData.json", function(treeData) {
+d3.json("https://raw.githubusercontent.com/aborger/knime_decisiontree/master/treeData.json", function(treeData) {
   treeData += JSON.stringify(treeData)
 })
 
