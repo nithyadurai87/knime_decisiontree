@@ -28,13 +28,6 @@
 
 var url = "https://raw.githubusercontent.com/aborger/knime_decisiontree/master/treeData.json";
 
-d3.json(url, function(treeData) {
-    var treeData = treeData;
-    root = treeData;
-    root.x0 = h / 2;
-    root.y0 = 0;
-  })
-
 // Set the dimensions and margins of the diagram
 var margin = {top: 20, right: 90, bottom: 30, left: 90},
     width = 960 - margin.left - margin.right,
@@ -58,9 +51,11 @@ var i = 0,
 var treemap = d3.tree().size([height, width]);
 
 // Assigns parent, children, height, depth
-root = d3.hierarchy(treeData, function(d) { return d.children; });
-root.x0 = height / 2;
-root.y0 = 0;
+d3.json(url, function(treeData) {
+  root = d3.hierarchy(treeData, function(d) { return d.children; });
+  root.x0 = height / 2;
+  root.y0 = 0;
+})
 
 // Collapse after the second level
 root.children.forEach(collapse);
