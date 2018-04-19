@@ -60,7 +60,6 @@ function pushData(treeData) {
   root = d3.hierarchy(treeData, function(d) { return d.children; });
   root.x0 = height / 2;
   root.y0 = 0;
-  root.children.forEach(collapse);
   update(root);
 }
 
