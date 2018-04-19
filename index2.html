@@ -51,19 +51,22 @@ var i = 0,
 var treemap = d3.tree().size([height, width]);
 
 // Assigns parent, children, height, depth
-var treeData = [];
 
 d3.json("https://raw.githubusercontent.com/aborger/knime_decisiontree/master/treeData.json", function(treeData) {
-  treeData += JSON.stringify(treeData)
+  pushData(treeData)
 })
 
-root = d3.hierarchy(treeData, function(d) { return d.children; });
+function pushData(treeData) {
+  root = d3.hierarchy(treeData, function(d) { return d.children; });
   root.x0 = height / 2;
   root.y0 = 0;
+  root.children.forEach(collapse);
+  update(root);
+}
 
-root.children.forEach(collapse);
-
-update(root);
+/*root = d3.hierarchy(treeData, function(d) { return d.children; });
+  root.x0 = height / 2;
+  root.y0 = 0; */
 
 // Collapse the node and all it's children
 function collapse(d) {
