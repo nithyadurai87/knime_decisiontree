@@ -122,7 +122,6 @@
 		
 		bridge.initView = function(viewURL, repURL, valURL, title, initCall) {
 			showButtons(!!repURL);
-			initFrame(viewURL, repURL, valURL, title, initCall);
 			initButtons();
 		}
 		
@@ -182,42 +181,6 @@
 			}
 			window.location.reload();
 			showButtons(false);
-		}
-
-		laodJSONFile = function(url, callback) {
-			var httpRequest = new XMLHttpRequest();
-			httpRequest.onreadystatechange = function() {
-				if (httpRequest.readyState === 4) {
-					// local requests leave status at 0
-					if (httpRequest.status === 200 || httpRequest.status === 0) {
-						var data = JSON.parse(httpRequest.responseText);
-						if (callback) callback(data);
-					}
-				}
-			}
-			httpRequest.open('GET', url);
-			httpRequest.send();
-		}
-
-		initFrame = function(viewURL, repURL, valURL, title, initCall) {
-			var frame = document.getElementById(FRAME_ID);
-			frame.addEventListener('load', function() {
-				var frameWindow = document.getElementById(FRAME_ID).contentWindow;					
-				laodJSONFile(repURL, function(rep){
-					frameWindow.parsedRepresentation = rep;
-					if (frameWindow.parsedValue) {
-						frameWindow.eval(initCall);
-					}
-				});
-				laodJSONFile(valURL, function(val){
-					frameWindow.parsedValue = val;
-					if (frameWindow.parsedRepresentation) {
-						frameWindow.eval(initCall);
-					}
-				});
-			}, true);
-			window.document.title = title;
-			frame.setAttribute('src', viewURL);
 		}
 
 		initButtons = function() {
