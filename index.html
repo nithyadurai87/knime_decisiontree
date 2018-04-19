@@ -58,8 +58,8 @@ d3.json("treeData.json", function(error, treeData) {
 });*/
 
 var treeData = d3.json("treeData.json")
-
-console.log(treeData)  
+var root = treeData[0];
+update(root)
 
 function update(source) {
 
