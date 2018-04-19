@@ -55,12 +55,9 @@ d3.json(url, function(treeData) {
   root = d3.hierarchy(treeData, function(d) { return d.children; });
   root.x0 = height / 2;
   root.y0 = 0;
+  root.children.forEach(collapse);
+  update(root);
 })
-
-// Collapse after the second level
-root.children.forEach(collapse);
-
-update(root);
 
 // Collapse the node and all it's children
 function collapse(d) {
