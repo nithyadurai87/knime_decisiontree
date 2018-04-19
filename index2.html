@@ -68,7 +68,7 @@ d3.json("treeData.json", function(error, treeData) {
        return "M" + d.x + "," + d.y
        + "C" + (d.y + d.parent.y) / 2 + "," + d.x
        + " " + (d.y + d.parent.y) / 2 + "," + d.parent.x
-       + " " + d.parent.x + "," + d.parent.y;
+       + " " + d.parent.y + "," + d.parent.x;
        });
 
   // adds each node as a group
