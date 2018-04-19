@@ -27,8 +27,7 @@
 <script>
 
 var url = "https://raw.githubusercontent.com/aborger/knime_decisiontree/master/treeData.json";
-d3.json(url, function(json) {
-    var treeData= json;
+d3.json(url, function(treeData) {
     root = json;
     root.x0 = h / 2;
     root.y0 = 0;});
