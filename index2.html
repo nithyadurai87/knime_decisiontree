@@ -57,7 +57,7 @@ d3.json("https://raw.githubusercontent.com/aborger/knime_decisiontree/master/tre
 })
 
 function pushData(treeData) {
-  root = (d3.hierarchy(treeData, function(d) { return d.children; });
+  root = d3.hierarchy(treeData, function(d) { return d.children; });
   var root2 = JSON.stringify(root)
   root2.x0 = height / 2;
   root2.y0 = 0;
