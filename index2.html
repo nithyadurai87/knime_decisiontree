@@ -26,8 +26,12 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-var url = "https://raw.githubusercontent.com/aborger/knime_decisiontree/master/treeData.json";
+d3.json("https://raw.githubusercontent.com/aborger/knime_decisiontree/master/treeData.json", function(result) {
+  pushData(JSON.stringify(result))
+})
 
+
+function pushData(result) {
 // Set the dimensions and margins of the diagram
 var margin = {top: 20, right: 90, bottom: 30, left: 90},
     width = 960 - margin.left - margin.right,
@@ -45,25 +49,21 @@ var svg = d3.select("body").append("svg")
 
 var i = 0,
     duration = 750,
-    root,
-    root2;
+    root;
 
 // declares a tree layout and assigns the size
 var treemap = d3.tree().size([height, width]);
 
 // Assigns parent, children, height, depth
 
-d3.json("https://raw.githubusercontent.com/aborger/knime_decisiontree/master/treeData.json", function(treeData) {
-  pushData(treeData)
-})
-
-function pushData(treeData) {
-  var test = JSON.stringify(treeData)
-  root = d3.hierarchy(test, function(d) { return d.children; });
+function pushData(result) {
+  root = d3.hierarchy(result, function(d) { return d.children; });
   root.x0 = height / 2;
   root.y0 = 0;
+
+  root.children.forEach(collapse);
+
   update(root);
-}
 
 /*root = d3.hierarchy(treeData, function(d) { return d.children; });
   root.x0 = height / 2;
@@ -218,6 +218,6 @@ function update(source) {
     update(d);
   }
 }
-
+}
 </script>
 </body>
