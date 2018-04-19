@@ -54,7 +54,7 @@ var treemap = d3.tree().size([height, width]);
 var treeData = [];
 
 d3.json("treeData.json", function(treeData) {
-  treeData += treeData
+  treeData += JSON.stringify(treeData)
 })
 
 root = d3.hierarchy(treeData, function(d) { return d.children; });
