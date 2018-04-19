@@ -51,10 +51,13 @@ var svg = d3.select("body").append("svg")
   .append("g")
  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+/*
 d3.json("treeData.json", function(error, treeData) {
   root = treeData[0];
   update(root);
-});
+});*/
+
+var treeData = d3.json("treeData.json")
 
 console.log(treeData)  
 
