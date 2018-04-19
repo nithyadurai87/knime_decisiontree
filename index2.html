@@ -55,8 +55,6 @@ var i = 0,
 var treemap = d3.tree().size([height, width]);
 
 // Assigns parent, children, height, depth
-
-function pushData(result) {
   root = d3.hierarchy(result, function(d) { return d.children; });
   root.x0 = height / 2;
   root.y0 = 0;
