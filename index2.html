@@ -27,10 +27,13 @@
 <script>
 
 var url = "https://raw.githubusercontent.com/aborger/knime_decisiontree/master/treeData.json";
+
 d3.json(url, function(treeData) {
-    root = json;
+    var treeData = treeData;
+    root = treeData;
     root.x0 = h / 2;
-    root.y0 = 0;});
+    root.y0 = 0;
+  })
 
 // Set the dimensions and margins of the diagram
 var margin = {top: 20, right: 90, bottom: 30, left: 90},
