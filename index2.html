@@ -45,7 +45,8 @@ var svg = d3.select("body").append("svg")
 
 var i = 0,
     duration = 750,
-    root;
+    root,
+    root2;
 
 // declares a tree layout and assigns the size
 var treemap = d3.tree().size([height, width]);
@@ -58,7 +59,7 @@ d3.json("https://raw.githubusercontent.com/aborger/knime_decisiontree/master/tre
 
 function pushData(treeData) {
   root = d3.hierarchy(treeData, function(d) { return d.children; });
-  var root2 = JSON.stringify(root)
+  root2 = JSON.stringify(root)
   root2.x0 = height / 2;
   root2.y0 = 0;
   update(root2);
