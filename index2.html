@@ -106,7 +106,7 @@ d3.json("treeData.json", function(error, treeData) {
         .attr("transform", function(d) {
           return "translate(" + source.x0 + "," + source.y0 + ")";
       })
-      .on('click', click);
+      .on('click', click)
       .on('mouseover', hover);
 
     // Add Circle for the nodes
