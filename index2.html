@@ -103,7 +103,7 @@ d3.json("treeData.json", function(error, treeData) {
     var nodeEnter = node.enter().append('g')
         .attr('class', 'node')
         .attr("transform", function(d) {
-          return "translate(" + source.y0 + "," + source.x0 + ")";
+          return "translate(" + d.x + "," + d.y + ")";
       })
       .on('click', click);
 
