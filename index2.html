@@ -34,8 +34,7 @@ var margin = {top: 20, right: 90, bottom: 30, left: 90},
   height = 1000 - margin.top - margin.bottom;
 
 // declares a tree layout and assigns the size
-var treemap = d3.tree()
-  .size([height, width]);
+var treemap = d3.tree().size([height, width]);
 
 // load the external data
 d3.json("treeData.json", function(error, treeData) {
@@ -62,9 +61,6 @@ d3.json("treeData.json", function(error, treeData) {
   var i = 0,
       duration = 750,
       root;
-
-  // declares a tree layout and assigns the size
-  var treemap = d3.tree().size([height, width]);
 
   // Assigns parent, children, height, depth
   root = d3.hierarchy(treeData, function(d) { return d.children; });
