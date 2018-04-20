@@ -110,7 +110,7 @@ d3.json("treeData.json", function(error, treeData) {
       .on('mouseover', hover);
 
     // Add Circle for the nodes
-    nodeEnter.append('circle')
+    nodeEnter.append('rect')
         .attr('class', 'node')
         .attr('r', 1e-6)
         .style("fill", function(d) {
@@ -139,7 +139,7 @@ d3.json("treeData.json", function(error, treeData) {
        });
 
     // Update the node attributes and style
-    nodeUpdate.select('circle.node')
+    nodeUpdate.select('rect.node')
       .attr('r', 10)
       .style("fill", function(d) {
           return d._children ? "lightsteelblue" : "#fff";
@@ -156,7 +156,7 @@ d3.json("treeData.json", function(error, treeData) {
         .remove();
 
     // On exit reduce the node circles size to 0
-    nodeExit.select('circle')
+    nodeExit.select('rect')
       .attr('r', 1e-6);
 
     // On exit reduce the opacity of text labels
