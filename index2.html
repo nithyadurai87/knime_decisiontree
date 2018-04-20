@@ -91,7 +91,7 @@ d3.json("treeData.json", function(error, treeData) {
         links = treeData.descendants().slice(1);
 
     // Normalize for fixed-depth.
-    nodes.forEach(function(d){ d.y = d.depth * 180});
+    nodes.forEach(function(d){ d.y = d.depth * 100});
 
     // ****************** Nodes section ***************************
 
@@ -185,7 +185,7 @@ d3.json("treeData.json", function(error, treeData) {
     var linkExit = link.exit().transition()
         .duration(duration)
         .attr('d', function(d) {
-          var o = {x: source.x, y: source.y}
+          var o = {y: source.y, x: source.x}
           return diagonal(o, o)
         })
         .remove();
