@@ -103,7 +103,7 @@ d3.json("treeData.json", function(error, treeData) {
     var nodeEnter = node.enter().append('g')
         .attr('class', 'node')
         .attr("transform", function(d) {
-          return "translate(" + source.y0 + "," + source.x0 + ")";
+          return "translate(" + source.x0 + "," + source.y0 + ")";
       })
       .on('click', click);
 
@@ -118,12 +118,10 @@ d3.json("treeData.json", function(error, treeData) {
     // Add labels for the nodes
     nodeEnter.append('text')
         .attr("dy", ".35em")
-        .attr("x", function(d) {
-            return d.children || d._children ? -13 : 13;
+        .attr("y", function(d) {
+            return d.children || d._children ? -18 : 18;
         })
-        .attr("text-anchor", function(d) {
-            return d.children || d._children ? "end" : "start";
-        })
+        .attr("text-anchor", "middle")
         .text(function(d) { return d.data.name; });
 
     // UPDATE
@@ -171,7 +169,7 @@ d3.json("treeData.json", function(error, treeData) {
     var linkEnter = link.enter().insert('path', "g")
         .attr("class", "link")
         .attr('d', function(d){
-          var o = {x: source.x0, y: source.y0}
+          var o = {y: source.y0, x: source.x0}
           return diagonal(o, o)
         });
 
