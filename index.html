@@ -115,7 +115,7 @@ d3.json("treeData.json", function(error, treeData) {
         links = treeData.descendants().slice(1);
 
     // Normalize for fixed-depth.
-    nodes.forEach(function(d){ d.y = d.depth * 800});
+    nodes.forEach(function(d){ d.y = d.depth * 180});
 
     // ****************** Nodes section ***************************
 
@@ -161,9 +161,7 @@ d3.json("treeData.json", function(error, treeData) {
             return d.children || d._children ? "end" : "start";
         })
         .text(function(d) { 
-          if (d.children) {
             return d.data.children[0].predicateList.predicates[0].field 
-          }
         });
 
     nodeEnter.append('text')
