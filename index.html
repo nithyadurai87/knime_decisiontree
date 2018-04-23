@@ -174,11 +174,11 @@ d3.json("treeData.json", function(error, treeData) {
           if (d.children) {
             var splitData = d.data.predicateList.predicates[0].operator
             if (splitData.indexOf("lessOrEqual")) {
-              splitData.replace("lessOrEqual", "\u2264")
-              return splitData + " " +  d.data.predicateList.predicates[0].value
+              //splitData.replace("lessOrEqual", "\u2264")
+              return splitData //+ " " +  d.data.predicateList.predicates[0].value
             } else if (splitData.indexOf("greaterThan")) {
-              splitData.replace("greaterThan", "\u003E")
-              return splitData + " " +  d.data.predicateList.predicates[0].value
+              //splitData.replace("greaterThan", "\u003E")
+              return splitData //+ " " +  d.data.predicateList.predicates[0].value
             } else {
               return splitData + " " +  d.data.predicateList.predicates[0].value
             }
