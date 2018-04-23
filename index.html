@@ -43,7 +43,7 @@ var nodeWidth = 150,
 
 // declares a tree layout and assigns the size
 var treemap = d3.tree()
-  .size([height, width]),
+  .size([height, width])
   .nodeSize([nodeWidth, nodeHeight])
   .separation(function(a, b) {
      var distWidth = a.distWidth + b.distWidth,
