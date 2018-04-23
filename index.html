@@ -171,9 +171,8 @@ d3.json("treeData.json", function(error, treeData) {
             return d.children || d._children ? "end" : "start";
         })
         .text(function(d) { 
-            var splitData = JSON.stringify(d.data.predicateList.predicates[0].operator)
-            var removeQuotes = splitData.replace("lessOrEqual", "\u2264").replace("greaterThan", "\u003E").replace(/\"/g, "")
-              return removeQuotes + " " + d.data.predicateList.predicates[0].value
+            var splitData = JSON.stringify(d.data.predicateList.predicates[0].operator).replace("lessOrEqual", "\u2264").replace("greaterThan", "\u003E").replace(/\"/g, "")
+              return splitData + " " + d.data.predicateList.predicates[0].value
         });
 
     // Update the node attributes and style
