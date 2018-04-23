@@ -152,7 +152,7 @@ d3.json("treeData.json", function(error, treeData) {
           return "translate(" + d.x + "," + d.y + ")";
        });
 
-    nodeUpdate.append('text')
+    nodeEnter.append('text')
       .attr("dy", "6.5em")
       .attr("x", function(d) {
             return d.children || d._children ? 50 : 50;
