@@ -138,17 +138,6 @@ d3.json("treeData.json", function(error, treeData) {
             return d._children ? "lightsteelblue" : "#fff";
         });
 
-    // Add labels for the nodes
-    /*nodeEnter.append('text')
-        .attr("dy", "6.5em")
-        .attr("x", function(d) {
-            return d.children || d._children ? 50 : 50;
-        })
-        .attr("text-anchor", function(d) {
-            return d.children || d._children ? "end" : "start";
-        })
-        .text(function(d) { return d.data.predicateList.predicates[0].field }); */
-
     // UPDATE
     var nodeUpdate = nodeEnter.merge(node);
 
