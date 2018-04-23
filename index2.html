@@ -128,7 +128,7 @@ d3.json("treeData.json", function(error, treeData) {
         .attr("text-anchor", function(d) {
             return d.children || d._children ? "end" : "start";
         })
-        .text(function(d) { return d.data.predicateList.predicates[0].field; });
+        .text(function(d) { return d.data.children.predicateList.predicates[0].field; });
 
     // UPDATE
     var nodeUpdate = nodeEnter.merge(node);
