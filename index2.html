@@ -162,6 +162,20 @@ d3.json("treeData.json", function(error, treeData) {
           }
         });
 
+    nodeUpdate.append('text')
+      .attr("dy", "-1em")
+      .attr("x", function(d) {
+            return d.children || d._children ? 50 : 50;
+        })
+        .attr("text-anchor", function(d) {
+            return d.children || d._children ? "end" : "start";
+        })
+        .text(function(d) { 
+          if (d.children) {
+            return d.data.predicateList.predicates[0].operator + " " +  d.data.predicateList.predicates[0].value
+          }
+        });
+
     // Update the node attributes and style
     nodeUpdate.select('rect.node')
       .attr('r', 10)
