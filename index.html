@@ -62,7 +62,7 @@ d3.json("treeData.json", function(error, treeData) {
       width = +svg.attr("width"),
       height = +svg.attr("height");
 
-  svg.attr("viewBox", "0 "+(-1*(height-margin.top-margin.bottom)/2)+" "+width+" "+height)
+  svg.attr("viewBox", "0 " + "0" +" "+width+" "+height)
 
   var g = gcontainer.append("g");
 
@@ -115,7 +115,7 @@ d3.json("treeData.json", function(error, treeData) {
         links = treeData.descendants().slice(1);
 
     // Normalize for fixed-depth.
-    nodes.forEach(function(d){ d.y = d.depth * 350});
+    nodes.forEach(function(d){ d.y = d.depth * 800});
 
     // ****************** Nodes section ***************************
 
