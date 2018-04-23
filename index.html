@@ -242,10 +242,10 @@ d3.json("treeData.json", function(error, treeData) {
     // Creates a curved (diagonal) path from parent to the child nodes
     function diagonal(s, d) {
 
-      path = `M ${s.x} ${s.y}
-              C ${(s.x + d.x) / 2} ${s.y},
-                ${(s.x + d.x) / 2} ${d.y},
-                ${d.x} ${d.y}`
+      path = `M ${(s.x) * 1.5} ${s.y}
+              C ${(s.x + d.x) / 0.8} ${s.y},
+                ${(s.x + d.x) / 0.8} ${d.y},
+                ${(d.x) * 1.5} ${d.y}`
 
       return path
     }
