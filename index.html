@@ -23,9 +23,11 @@
 </style>
 
 <body>
-  <svg width="960" height="500">
-    <g class="container"></g>
-  </svg>
+  <div class="d3-holder" style="width: 960px; height:500px; overflow: scroll!important">
+    <svg width="1280" height="8000">
+      <g class="container"></g>
+    </svg>
+  </div>
 <!-- load the d3.js library -->      
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -69,9 +71,9 @@ d3.json("treeData.json", function(error, treeData) {
     .attr("height", height)
     .style("fill", "none")
     .style("pointer-events", "all")
-    .call(d3.zoom()
+    /*.call(d3.zoom()
         .scaleExtent([0, 2])
-        .on("zoom", zoomed));
+        .on("zoom", zoomed)); */
 
   function zoomed() {
     gcontainer
