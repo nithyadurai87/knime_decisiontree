@@ -174,15 +174,12 @@ d3.json("treeData.json", function(error, treeData) {
         })
         .text(function(d) { 
           if (d.children) {
-            splitData = d.data.predicateList.predicates[0].operator
-            if (splitData.indexOf("lessOrEqual")) {
-              //splitData.replace("lessOrEqual", "\u2264")
-              return splitData //+ " " +  d.data.predicateList.predicates[0].value
-            } else if (splitData.indexOf("greaterThan")) {
-              //splitData.replace("greaterThan", "\u003E")
-              return splitData //+ " " +  d.data.predicateList.predicates[0].value
+            if (d.data.predicateList.predicates[0].operator.indexOf("lessOrEqual")) {
+              return d.data.predicateList.predicates[0].operator.replace("lessOrEqual", "\u2264") + " " +  d.data.predicateList.predicates[0].value
+            } else if (d.data.predicateList.predicates[0].operator.indexOf("greaterThan")) {
+              return d.data.predicateList.predicates[0].operator.replace("greaterThan", "\u003E") + " " +  d.data.predicateList.predicates[0].value
             } else {
-              return splitData + " " +  d.data.predicateList.predicates[0].value
+              return d.data.predicateList.predicates[0].operator + " " +  d.data.predicateList.predicates[0].value
             }
           }
         });
