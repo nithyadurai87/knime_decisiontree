@@ -170,6 +170,7 @@ d3.json("treeData.json", function(error, treeData) {
             return d.children || d._children ? "end" : "start";
         })
         .text(function(d) { 
+        if (d.data.hasOwnProperty("children"))
             return d.data.children[0].predicateList.predicates[0].field 
         });
 
