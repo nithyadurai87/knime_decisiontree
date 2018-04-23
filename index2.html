@@ -226,7 +226,7 @@ d3.json("treeData.json", function(error, treeData) {
     }
 
     function hover(d) {
-       console.log(d.data.predicateList)
+       console.log(d.data.predicateList.predicates[0].field)
     }
   }
 }); 
