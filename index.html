@@ -101,8 +101,6 @@ d3.json("treeData.json", function(error, treeData) {
     }
   }
 
-  var splitData = "";
-
   function update(source) {
 
     // Assigns the x and y position for the nodes
@@ -174,10 +172,11 @@ d3.json("treeData.json", function(error, treeData) {
         })
         .text(function(d) { 
           if (d.children) {
-            if (d.data.predicateList.predicates[0].operator.indexOf("lessOrEqual")) {
-              return d.data.predicateList.predicates[0].operator.replace("lessOrEqual", "\u2264") + " " +  d.data.predicateList.predicates[0].value
-            } else if (d.data.predicateList.predicates[0].operator.indexOf("greaterThan")) {
-              return d.data.predicateList.predicates[0].operator.replace("greaterThan", "\u003E") + " " +  d.data.predicateList.predicates[0].value
+            var splitData = JSON.stringify(d.data.predicateList.predicates[0].operator)
+            if (splitData.indexOf("lessOrEqual")) {
+              return splitData.replace("lessOrEqual", "\u2264") + " " +  d.data.predicateList.predicates[0].value
+            } else if (splitData.indexOf("greaterThan")) {
+              return splitData.replace("greaterThan", "\u003E") + " " +  d.data.predicateList.predicates[0].value
             } else {
               return d.data.predicateList.predicates[0].operator + " " +  d.data.predicateList.predicates[0].value
             }
