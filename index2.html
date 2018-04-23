@@ -70,6 +70,11 @@ d3.json("treeData.json", function(error, treeData) {
         .scaleExtent([1 / 2, 4])
         .on("zoom", zoomed));
 
+  function zoomed() {
+    svg.selectAll('g.node')
+    .attr("transform", d3.event.transform);
+  }
+
   var i = 0,
       duration = 750,
       root;
@@ -110,11 +115,6 @@ d3.json("treeData.json", function(error, treeData) {
     // Update the nodes...
     var node = svg.selectAll('g.node')
         .data(nodes, function(d) {return d.id || (d.id = ++i); });
-
-    function zoomed() {
-      svg.selectAll('g.node')
-      .attr("transform", d3.event.transform);
-    }
 
     // Enter any new modes at the parent's previous position.
     var nodeEnter = node.enter().append('g')
