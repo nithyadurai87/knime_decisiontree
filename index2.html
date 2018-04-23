@@ -64,6 +64,16 @@ d3.json("treeData.json", function(error, treeData) {
 
   g.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  // Define the zoom function for the zoomable tree
+
+    function zoom() {
+        gcontainer.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    }
+
+
+    // define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
+    var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
+
   gcontainer.append("rect")
     .attr("width", width)
     .attr("height", height)
@@ -101,15 +111,6 @@ d3.json("treeData.json", function(error, treeData) {
       d.children = null
     }
   }
-    // Define the zoom function for the zoomable tree
-
-    function zoom() {
-        gcontainer.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-    }
-
-
-    // define the zoomListener which calls the zoom function on the "zoom" event constrained within the scaleExtents
-    var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
 
   function update(source) {
 
