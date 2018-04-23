@@ -179,6 +179,8 @@ d3.json("treeData.json", function(error, treeData) {
             } else if (splitData.indexOf("greaterThan")) {
               splitData.replace("greaterThan", "\u003E")
               return splitData + " " +  d.data.predicateList.predicates[0].value
+            } else {
+              return splitData + " " +  d.data.predicateList.predicates[0].value
             }
           }
         });
