@@ -128,7 +128,7 @@ d3.json("treeData.json", function(error, treeData) {
         .attr("text-anchor", function(d) {
             return d.children || d._children ? "end" : "start";
         })
-        .text(function(d) { return d._children ? d.data.predicateList.predicates[0].field });
+        .text(function(d) { return d.data.predicateList.predicates[0].field });
 
     // UPDATE
     var nodeUpdate = nodeEnter.merge(node);
@@ -227,7 +227,8 @@ d3.json("treeData.json", function(error, treeData) {
 
     function hover(d) {
       if (d.children) {
-       console.log(d.data.children[0].predicateList.predicates[0].field)
+        d._children = d.children
+        console.log(d._children[0].predicateList.predicates[0].field)
       } else {
         console.log("no children")
       }
