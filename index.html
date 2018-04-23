@@ -211,13 +211,10 @@ d3.json("treeData.json", function(error, treeData) {
     // Enter any new links at the parent's previous position.
     var linkEnter = link.enter().insert('path', "g")
         .attr("class", "link")
-        d3.linkVertical()
-        .x(function(d) { return d.x; })
-        .y(function(d) { return d.y; });
-        /*.attr('d', function(d){
+        .attr('d', function(d){
           var o = {y: source.y0, x: source.x0}
           return diagonal(o, o)
-        }); */
+        });
 
     // UPDATE
     var linkUpdate = linkEnter.merge(link);
@@ -245,10 +242,10 @@ d3.json("treeData.json", function(error, treeData) {
     // Creates a curved (diagonal) path from parent to the child nodes
     function diagonal(s, d) {
 
-      path = `M ${(s.x) * 1.5} ${s.y}
+      path = `M ${s.x} ${s.y}
               C ${(s.x + d.x) / 1.2} ${s.y},
                 ${(s.x + d.x) / 1.2} ${d.y},
-                ${(d.x) * 1.5} ${d.y}`
+                ${d.x} ${d.y}`
 
       return path
     }
