@@ -113,7 +113,7 @@ d3.json("treeData.json", function(error, treeData) {
         links = treeData.descendants().slice(1);
 
     // Normalize for fixed-depth.
-    nodes.forEach(function(d){ d.y = d.depth * 550});
+    nodes.forEach(function(d){ d.x = d.depth * 350});
 
     // ****************** Nodes section ***************************
 
