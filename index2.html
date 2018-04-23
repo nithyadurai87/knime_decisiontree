@@ -162,7 +162,7 @@ d3.json("treeData.json", function(error, treeData) {
           }
         });
 
-    nodeUpdate.append('text')
+    nodeEnter.append('text')
       .attr("dy", "-1em")
       .attr("x", function(d) {
             return d.children || d._children ? 50 : 50;
@@ -172,7 +172,13 @@ d3.json("treeData.json", function(error, treeData) {
         })
         .text(function(d) { 
           if (d.children) {
-            return d.data.predicateList.predicates[0].operator + " " +  d.data.predicateList.predicates[0].value
+            var splitData = d.data.predicateList.predicates[0].operator + " " +  d.data.predicateList.predicates[0].value
+            if (splitData.indexOf("lessOrEqual")) {
+              splitData.replace("lessOrEqual", "\u2264")
+              return splitData
+            } else if (splitData.indexOf("greaterThan")) {
+              splitData.replace("greaterThan", "\u003E")
+            }
           }
         });
 
