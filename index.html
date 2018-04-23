@@ -243,8 +243,8 @@ d3.json("treeData.json", function(error, treeData) {
     function diagonal(s, d) {
 
       path = `M ${(s.x) + 50} ${s.y}
-              C ${(s.x + d.x) / 2} ${s.y},
-                ${(s.x + d.x) / 2} ${(d.y) + 50},
+              C ${(s.x + d.x) / 1.9} ${s.y},
+                ${(s.x + d.x) / 1.9} ${(d.y) + 50},
                 ${(d.x) + 50} ${(d.y) + 50}`
 
       return path
