@@ -23,7 +23,9 @@
 </style>
 
 <body>
-  <svg width="960" height="500"></svg>
+  <svg width="960" height="500">
+    <g class="container"></g>
+  </svg>
 <!-- load the d3.js library -->      
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -54,14 +56,15 @@ d3.json("treeData.json", function(error, treeData) {
   // appends a 'group' element to 'svg'
   // moves the 'group' element to the top left margin
   var svg = d3.select("svg"),
+      gcontainer = d3.select("g.container"),
       width = +svg.attr("width"),
       height = +svg.attr("height");
 
-  var g = svg.append("g");
+  var g = gcontainer.append("g");
 
   g.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  svg.append("rect")
+  gcontainer.append("rect")
     .attr("width", width)
     .attr("height", height)
     .style("fill", "none")
@@ -71,7 +74,7 @@ d3.json("treeData.json", function(error, treeData) {
         .on("zoom", zoomed));
 
   function zoomed() {
-    svg.selectAll('g.node')
+    gcontainer
     .attr("transform", d3.event.transform);
   }
 
@@ -113,7 +116,7 @@ d3.json("treeData.json", function(error, treeData) {
     // ****************** Nodes section ***************************
 
     // Update the nodes...
-    var node = svg.selectAll('g.node')
+    var node = gcontainer.selectAll('g.node')
         .data(nodes, function(d) {return d.id || (d.id = ++i); });
 
     // Enter any new modes at the parent's previous position.
