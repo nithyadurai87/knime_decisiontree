@@ -172,13 +172,7 @@ d3.json("treeData.json", function(error, treeData) {
         })
         .text(function(d) { 
             var splitData = JSON.stringify(d.data.predicateList.predicates[0].operator)
-            if (splitData.indexOf("lessOrEqual")) {
-              return splitData.replace("lessOrEqual", "\u2264") + " " +  d.data.predicateList.predicates[0].value
-            } else if (splitData.indexOf("greaterThan")) {
-              return splitData.replace("greaterThan", "\u003E") + " " +  d.data.predicateList.predicates[0].value
-            } else {
-              return d.data.predicateList.predicates[0].operator + " " +  d.data.predicateList.predicates[0].value
-            }
+              return splitData.replace("lessOrEqual", /\u2264/).replace("greaterThan", /\u003E/) + " " +  d.data.predicateList.predicates[0].value
         });
 
     // Update the node attributes and style
