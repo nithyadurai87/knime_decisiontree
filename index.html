@@ -172,7 +172,7 @@ d3.json("treeData.json", function(error, treeData) {
         })
         .text(function(d) { 
             var splitData = JSON.stringify(d.data.predicateList.predicates[0].operator)
-              return splitData.replace("lessOrEqual", /\u2264/).replace("greaterThan", /\u003E/) + " " +  d.data.predicateList.predicates[0].value
+              return splitData.replace("lessOrEqual", "\u2264").replace("greaterThan", "\u003E") + d.data.predicateList.predicates[0].value
         });
 
     // Update the node attributes and style
