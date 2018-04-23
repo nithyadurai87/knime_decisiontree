@@ -123,7 +123,7 @@ d3.json("treeData.json", function(error, treeData) {
     nodeEnter.append('text')
         .attr("dy", "6.5em")
         .attr("x", function(d) {
-            return d.children || d._children ? -50 : 50;
+            return d.children || d._children ? 50 : 50;
         })
         .attr("text-anchor", function(d) {
             return d.children || d._children ? "end" : "start";
@@ -226,7 +226,7 @@ d3.json("treeData.json", function(error, treeData) {
     }
 
     function hover(d) {
-       console.log(d.data.recordCount)
+       console.log(d.data.predicateList.field)
     }
   }
 }); 
