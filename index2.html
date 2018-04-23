@@ -120,7 +120,7 @@ d3.json("treeData.json", function(error, treeData) {
         });
 
     // Add labels for the nodes
-    nodeEnter.append('text')
+    /*nodeEnter.append('text')
         .attr("dy", "6.5em")
         .attr("x", function(d) {
             return d.children || d._children ? 50 : 50;
@@ -128,7 +128,7 @@ d3.json("treeData.json", function(error, treeData) {
         .attr("text-anchor", function(d) {
             return d.children || d._children ? "end" : "start";
         })
-        .text(function(d) { return d.data.predicateList.predicates[0].field });
+        .text(function(d) { return d.data.predicateList.predicates[0].field }); */
 
     // UPDATE
     var nodeUpdate = nodeEnter.merge(node);
@@ -139,6 +139,20 @@ d3.json("treeData.json", function(error, treeData) {
       .attr("transform", function(d) { 
           return "translate(" + d.x + "," + d.y + ")";
        });
+
+    nodeUpdate.append('text')
+      .attr("dy", "6.5em")
+      .attr("x", function(d) {
+            return d.children || d._children ? 50 : 50;
+        })
+        .attr("text-anchor", function(d) {
+            return d.children || d._children ? "end" : "start";
+        })
+        .text(function(d) { 
+          if (d.children) {
+            return d.data.predicateList.predicates[0].field 
+          }
+        });
 
     // Update the node attributes and style
     nodeUpdate.select('rect.node')
