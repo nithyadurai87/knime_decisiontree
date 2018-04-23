@@ -201,7 +201,7 @@ d3.json("treeData.json", function(error, treeData) {
     // ****************** links section ***************************
 
     // Update the links...
-    var link = svg.selectAll('path.link')
+    var link = gcontainer.selectAll('path.link')
         .data(links, function(d) { return d.id; });
 
     // Enter any new links at the parent's previous position.
