@@ -150,7 +150,7 @@ d3.json("treeData.json", function(error, treeData) {
         })
         .text(function(d) { 
           if (d.children) {
-            return d.data.predicateList.predicates[0].field 
+            return d.data.children[0].predicateList.predicates[0].field 
           }
         });
 
