@@ -70,7 +70,8 @@ d3.json("treeData.json", function(error, treeData) {
     .style("fill", "none")
     .style("pointer-events", "all")
     .call(d3.zoom()
-        .scaleExtent([1 / 2, 4])
+        .scaleExtent([0, 2])
+        .translateExtent([[-100, -100], [width + 90, height + 100]])
         .on("zoom", zoomed));
 
   function zoomed() {
