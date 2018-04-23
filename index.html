@@ -73,10 +73,8 @@ d3.json("treeData.json", function(error, treeData) {
 
   var g = gcontainer.append("g");
 
-  g
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-  .attr("width", nodeWidth)
-  .attr("height", nodeHeight)
+  g.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
 
 
   gcontainer.append("rect")
