@@ -45,11 +45,11 @@ var nodeWidth = 150,
 var treemap = d3.tree()
   .size([height, width])
   .nodeSize([nodeWidth, nodeHeight])
-  .separation(function(a, b) {
+  /*.separation(function(a, b) {
      var distWidth = a.distWidth + b.distWidth,
      distance = distWidth / 2 + 16; // horizontal distance between nodes = 16
      return distance;
-  })
+  }) */
 
 // load the external data
 d3.json("treeData.json", function(error, treeData) {
