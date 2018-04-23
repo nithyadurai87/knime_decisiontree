@@ -173,13 +173,14 @@ d3.json("treeData.json", function(error, treeData) {
         .text(function(d) { 
           if (d.children) {
             var splitData = JSON.stringify(d.data.predicateList.predicates[0].operator)
-            if (splitData.indexOf("lessOrEqual")) {
+            return splitData
+            /*if (splitData.indexOf("lessOrEqual")) {
               return splitData.replace("lessOrEqual", "\u2264") + " " +  d.data.predicateList.predicates[0].value
             } else if (splitData.indexOf("greaterThan")) {
               return splitData.replace("greaterThan", "\u003E") + " " +  d.data.predicateList.predicates[0].value
             } else {
               return d.data.predicateList.predicates[0].operator + " " +  d.data.predicateList.predicates[0].value
-            }
+            } */
           }
         });
 
@@ -271,7 +272,7 @@ d3.json("treeData.json", function(error, treeData) {
     function hover(d) {
       if (d.children) {
         d._children = d.children
-        console.log(splitData)
+        console.log("splitData")
       } else {
         console.log("no children")
       }
