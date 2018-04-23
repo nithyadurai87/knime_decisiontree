@@ -170,9 +170,11 @@ d3.json("treeData.json", function(error, treeData) {
         .attr("text-anchor", function(d) {
             return d.children || d._children ? "end" : "start";
         })
-        .text(function(d) { 
-            var splitData = JSON.stringify(d.data.predicateList.predicates[0].operator).replace("lessOrEqual", "\u2264").replace("greaterThan", "\u003E").replace(/\"/g, "")
-              return splitData + " " + d.data.predicateList.predicates[0].value
+        .text(function(d) {
+          if (d.data.name != 0) { 
+          var splitData = JSON.stringify(d.data.predicateList.predicates[0].operator).replace("lessOrEqual", "\u2264").replace("greaterThan", "\u003E").replace(/\"/g, "")
+            return splitData + " " + d.data.predicateList.predicates[0].value
+          }
         });
 
     // Update the node attributes and style
