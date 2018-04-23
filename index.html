@@ -84,7 +84,7 @@ d3.json("treeData.json", function(error, treeData) {
 
   // Assigns parent, children, height, depth
   root = d3.hierarchy(treeData, function(d) { return d.children; });
-  root.x0 = height / 2;
+  root.x0 = height / 1.75;
   root.y0 = 0;
 
   // Collapse after the second level
