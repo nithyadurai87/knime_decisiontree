@@ -40,7 +40,8 @@ var margin = {top: 20, right: 90, bottom: 30, left: 60},
 
 // declares a tree layout and assigns the size
 var treemap = d3.tree()
-  .size([height, width])
+  //.size([height, width])
+  .nodeSize([150, 150])
   
 // load the external data
 d3.json("treeData.json", function(error, treeData) {
