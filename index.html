@@ -65,7 +65,7 @@ d3.json("treeData.json", function(error, treeData) {
 
   var g = gcontainer.append("g");
 
-  g.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+  g.attr("transform", "translate(" + 350+ "," + 20 + ")")
 
 
 
@@ -89,8 +89,8 @@ d3.json("treeData.json", function(error, treeData) {
 
   // Assigns parent, children, height, depth
   root = d3.hierarchy(treeData, function(d) { return d.children; });
-  root.x0 = 350;
-  root.y0 = 20;
+  root.x0 = height / 1.75;
+  root.y0 = 0;
 
   // Collapse after the second level
   root.children.forEach(collapse);
