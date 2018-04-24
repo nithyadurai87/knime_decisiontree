@@ -207,15 +207,21 @@ d3.json("treeData.json", function(error, treeData) {
 
     // Update the links...
     var link = svg.selectAll('path.link')
-        .data(links, function(d) { return d.id; });
+        .attr("d", d3.linkHorizontal()
+          .x(function(d) { return d.x; })
+          .y(function(d) { return d.y; }));
+        //.data(links, function(d) { return d.id; });
 
     // Enter any new links at the parent's previous position.
     var linkEnter = link.enter().insert('path', "g")
         .attr("class", "link")
-        .attr('d', function(d){
+        .attr("d", d3.linkHorizontal()
+          .x(function(d) { return d.x; })
+          .y(function(d) { return d.y; }));
+        /* .attr('d', function(d){
           var o = {y: source.y0, x: source.x0}
           return diagonal(o, o)
-        });
+        });*/
 
     // UPDATE
     var linkUpdate = linkEnter.merge(link);
@@ -223,16 +229,16 @@ d3.json("treeData.json", function(error, treeData) {
     // Transition back to the parent element position
     linkUpdate.transition()
         .duration(duration)
-        .attr('d', function(d){ return diagonal(d, d.parent) });
+        //.attr('d', function(d){ return diagonal(d, d.parent) });
 
     // Remove any exiting links
     var linkExit = link.exit().transition()
         .duration(duration)
-        .attr('d', function(d) {
+        /*.attr('d', function(d) {
           var o = {x: source.x, y: source.y}
           return diagonal(o, o)
         })
-        .remove();
+        .remove();*/
 
     // Store the old positions for transition.
     nodes.forEach(function(d){
