@@ -57,10 +57,10 @@ d3.json("treeData.json", function(error, treeData) {
   // appends a 'group' element to 'svg'
   // moves the 'group' element to the top left margin
   var svg = d3.select('.d3-holder').append('svg')
-              .attr("width", 1280)
+              .attr("width", 1920)
               .attr("height", 8000)
               .append("g")
-              .attr("transform", "translate(" + 350 + "," + 20 + ")");
+              .attr("transform", "translate(" + 960 + "," + 20 + ")");
  
       var width = +svg.attr("width"),
       height = +svg.attr("height");
