@@ -128,7 +128,7 @@ d3.json("treeData.json", function(error, treeData) {
     var nodeEnter = node.enter().append('g')
         .attr('class', 'node')
         .attr("transform", function(d) {
-          return "translate(" + source.x0 + "," + source.y0 + ")";
+          return "translate(" + (height / 1.3) + "," + (source.y0 + 20) + ")";
       })
       .on('click', click)
       .on('mouseover', hover);
