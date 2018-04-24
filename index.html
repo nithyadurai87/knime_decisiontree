@@ -89,6 +89,11 @@ d3.json("treeData.json", function(error, treeData) {
   root.x0 = 0;
   root.y0 = height / 2;
 
+  var diagonal = d3.linkVertical()
+    .x(function(d) { return d.x; })
+    .y(function(d) { return d.y; });
+
+
   // Collapse after the second level
   root.children.forEach(collapse);
 
@@ -207,33 +212,43 @@ d3.json("treeData.json", function(error, treeData) {
 
     // Update the links...
     var link = svg.selectAll('path.link')
-        .attr("d", d3.linkHorizontal()
-          .x(function(d) { return d.x; })
-          .y(function(d) { return d.y; }));
-        //.data(links, function(d) { return d.id; });
+        .data(root.links(), function(d) { return d.target.id; });.data(links, function(d) { return d.id; });
 
     // Enter any new links at the parent's previous position.
     var linkEnter = link.enter().insert('path', "g")
         .attr("class", "link")
-        .attr("d", d3.linkHorizontal()
-          .x(function(d) { return d.x; })
-          .y(function(d) { return d.y; }));
+        .attr("d", function(d) {
+          var o = {x: source.x0, y: source.y0};
+          return diagonal({source: o, target: o});
+        })
+        .transition()
+          .duration(duration)
+          .attr("d", diagonal);
         /* .attr('d', function(d){
           var o = {y: source.y0, x: source.x0}
           return diagonal(o, o)
         });*/
 
     // UPDATE
-    var linkUpdate = linkEnter.merge(link);
+    //var linkUpdate = linkEnter.merge(link);
 
     // Transition back to the parent element position
-    linkUpdate.transition()
+    /*linkUpdate.transition()
         .duration(duration)
-        //.attr('d', function(d){ return diagonal(d, d.parent) });
+        //.attr('d', function(d){ return diagonal(d, d.parent) }); */
+
+      link.transition()
+      .duration(duration)
+      .attr("d", diagonal);
 
     // Remove any exiting links
-    var linkExit = link.exit().transition()
-        .duration(duration)
+     link.exit().transition()
+      .duration(duration)
+      .attr("d", function(d) {
+        var o = {x: source.x, y: source.y};
+        return diagonal({source: o, target: o});
+      })
+      .remove();
         /*.attr('d', function(d) {
           var o = {x: source.x, y: source.y}
           return diagonal(o, o)
