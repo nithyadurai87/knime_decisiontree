@@ -129,9 +129,10 @@ d3.json("treeData.json", function(error, treeData) {
     // Enter any new modes at the parent's previous position.
     var nodeEnter = node.enter().append('g')
         .attr('class', 'node')
-        .attr("transform", function(d) {
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        /*.attr("transform", function(d) {
           return "translate(" + source.x0 + "," + source.y0 + ")";
-      })
+      }) */
       .on('click', click)
       .on('mouseover', hover);
 
@@ -224,18 +225,6 @@ d3.json("treeData.json", function(error, treeData) {
         .transition()
           .duration(duration)
           .attr("d", diagonal);
-        /* .attr('d', function(d){
-          var o = {y: source.y0, x: source.x0}
-          return diagonal(o, o)
-        });*/
-
-    // UPDATE
-    //var linkUpdate = linkEnter.merge(link);
-
-    // Transition back to the parent element position
-    /*linkUpdate.transition()
-        .duration(duration)
-        //.attr('d', function(d){ return diagonal(d, d.parent) }); */
 
       link.transition()
       .duration(duration)
@@ -249,28 +238,12 @@ d3.json("treeData.json", function(error, treeData) {
         return diagonal({source: o, target: o});
       })
       .remove();
-        /*.attr('d', function(d) {
-          var o = {x: source.x, y: source.y}
-          return diagonal(o, o)
-        })
-        .remove();*/
 
     // Store the old positions for transition.
     nodes.forEach(function(d){
       d.x0 = d.x;
       d.y0 = d.y;
     });
-
-    // Creates a curved (diagonal) path from parent to the child nodes
-    function diagonal(s, d) {
- 
-    path = `M ${(s.x) + 50} ${s.y}
-          C ${(s.x) / 2} ${s.y},
-            ${(s.x) / 2} ${(d.y) + 50},
-            ${(d.x) + 50} ${(d.y) + 50}`
-
-    return path;
-    }
 
     // Toggle children on click.
     function click(d) {
