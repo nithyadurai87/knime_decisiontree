@@ -24,9 +24,7 @@
 
 <body>
   <div class="d3-holder" style="width: 960px; height:500px; overflow: scroll!important">
-    <svg width="1280" height="8000">
-      <g class="container"></g>
-    </svg>
+    
   </div>
 <!-- load the d3.js library -->      
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -58,16 +56,16 @@ d3.json("treeData.json", function(error, treeData) {
   // append the svg object to the body of the page
   // appends a 'group' element to 'svg'
   // moves the 'group' element to the top left margin
-  var svg = d3.select("svg"),
-      gcontainer = d3.select("g.container"),
-      width = +svg.attr("width"),
+  var svg = d3.select('.d3-holder').append('svg')
+              .attr("width", 1280)
+              .attr("height", 8000)
+              .append("g")
+              .attr("transform", "translate(" + 350 + "," + 20 + ")");
+ 
+      var width = +svg.attr("width"),
       height = +svg.attr("height");
 
-  d3.select("g.container").append("g").attr("transform", "translate(" + 350 + "," + 20 + ")")
-
-
-
-  gcontainer.append("rect")
+  svg.append("rect")
     .attr("width", width)
     .attr("height", height)
     .style("fill", "none")
@@ -77,7 +75,7 @@ d3.json("treeData.json", function(error, treeData) {
         .on("zoom", zoomed)); */
 
   function zoomed() {
-    gcontainer
+    svg
     .attr("transform", d3.event.transform);
   }
 
@@ -119,7 +117,7 @@ d3.json("treeData.json", function(error, treeData) {
     // ****************** Nodes section ***************************
 
     // Update the nodes...
-    var node = gcontainer.selectAll('g.node')
+    var node = svg.selectAll('g.node')
         .data(nodes, function(d) {return d.id || (d.id = ++i); });
 
     // Enter any new modes at the parent's previous position.
@@ -207,7 +205,7 @@ d3.json("treeData.json", function(error, treeData) {
     // ****************** links section ***************************
 
     // Update the links...
-    var link = gcontainer.selectAll('path.link')
+    var link = svg.selectAll('path.link')
         .data(links, function(d) { return d.id; });
 
     // Enter any new links at the parent's previous position.
