@@ -65,7 +65,7 @@ d3.json("treeData.json", function(error, treeData) {
 
   var g = gcontainer.append("g");
 
-  g.attr("transform", "translate(" + 350+ "," + 20 + ")")
+  g.attr("transform", "translate(" + 350 + "," + 20 + ")")
 
 
 
@@ -128,7 +128,7 @@ d3.json("treeData.json", function(error, treeData) {
     var nodeEnter = node.enter().append('g')
         .attr('class', 'node')
         .attr("transform", function(d) {
-          return "translate(" + source.x0 + "," + source.y0 + ")";
+          return "translate(" + 350 + "," + 20 + ")";
       })
       .on('click', click)
       .on('mouseover', hover);
