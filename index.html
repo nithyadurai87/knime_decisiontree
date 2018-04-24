@@ -212,7 +212,7 @@ d3.json("treeData.json", function(error, treeData) {
 
     // Update the links...
     var link = svg.selectAll('path.link')
-        .data(root.links(), function(d) { return d.target.id; });.data(links, function(d) { return d.id; });
+        .data(root.links(), function(d) { return d.target.id; })
 
     // Enter any new links at the parent's previous position.
     var linkEnter = link.enter().insert('path', "g")
