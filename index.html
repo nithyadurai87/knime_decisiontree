@@ -63,9 +63,7 @@ d3.json("treeData.json", function(error, treeData) {
       width = +svg.attr("width"),
       height = +svg.attr("height");
 
-  var g = gcontainer.append("g");
-
-  g.attr("transform", "translate(" + 350 + "," + 20 + ")")
+  d3.select("g.container").append("g").attr("transform", "translate(" + 350 + "," + 20 + ")")
 
 
 
@@ -128,7 +126,7 @@ d3.json("treeData.json", function(error, treeData) {
     var nodeEnter = node.enter().append('g')
         .attr('class', 'node')
         .attr("transform", function(d) {
-          return "translate(" + 350 + "," + 20 + ")";
+          return "translate(" + source.x0 + "," + source.y0 + ")";
       })
       .on('click', click)
       .on('mouseover', hover);
@@ -150,7 +148,7 @@ d3.json("treeData.json", function(error, treeData) {
     nodeUpdate.transition()
       .duration(duration)
       .attr("transform", function(d) { 
-          return "translate(" + 350 + "," + 20 + ")";
+          return "translate(" + d.x + "," + d.y + ")";
        });
 
     nodeEnter.append('text')
