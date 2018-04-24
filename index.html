@@ -215,7 +215,7 @@ d3.json("treeData.json", function(error, treeData) {
     var linkEnter = link.enter().insert('path', "g")
         .attr("class", "link")
         .attr('d', function(d){
-          var o = {y: source.y0, x: source.x0 - 50}
+          var o = {y: source.y0, x: source.x0 + 50}
           return diagonal(o, o)
         });
 
