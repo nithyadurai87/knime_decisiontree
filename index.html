@@ -215,8 +215,12 @@ d3.json("treeData.json", function(error, treeData) {
     var linkEnter = link.enter().insert('path', "g")
         .attr("class", "link")
         .attr('d', function(d){
-          var o = {y: source.y0, x: source.x0}
-          return diagonal(o, o)
+          //var o = {y: source.y0, x: source.x0}
+          //return diagonal(o, o)
+          return "M" + d.x + "," + d.y
+         + "C" + d.x + "," + (d.y + d.parent.y) / 2
+         + " " + d.parent.x + "," +  (d.y + d.parent.y) / 2
+         + " " + d.parent.x + "," + d.parent.y;
         });
 
     // UPDATE
@@ -225,14 +229,14 @@ d3.json("treeData.json", function(error, treeData) {
     // Transition back to the parent element position
     linkUpdate.transition()
         .duration(duration)
-        .attr('d', function(d){ return diagonal(d, d.parent) });
+        //.attr('d', function(d){ return diagonal(d, d.parent) });
 
     // Remove any exiting links
     var linkExit = link.exit().transition()
         .duration(duration)
         .attr('d', function(d) {
           var o = {x: source.x, y: source.y}
-          return diagonal(o, o)
+          //return diagonal(o, o)
         })
         .remove();
 
@@ -244,13 +248,13 @@ d3.json("treeData.json", function(error, treeData) {
 
     // Creates a curved (diagonal) path from parent to the child nodes
     function diagonal(s, d) {
-
-      path = `M ${(s.x) + 50} ${s.y}
+ 
+      /*path = `M ${(s.x) + 50} ${s.y}
               C ${(s.x + d.x) / 1.9} ${s.y},
                 ${(s.x + d.x) / 1.9} ${(d.y) + 50},
-                ${(d.x) + 50} ${(d.y) + 50}`
+                ${(d.x) + 50} ${(d.y) + 50}` 
 
-      return path
+      return path */
     }
 
     // Toggle children on click.
