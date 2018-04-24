@@ -90,7 +90,7 @@ d3.json("treeData.json", function(error, treeData) {
   root.y0 = height / 2;
 
   var diagonal = d3.linkVertical()
-    .x(function(d) { return d.x; })
+    .x(function(d) { return (d.x) + 50; })
     .y(function(d) { return d.y; });
 
 
@@ -128,11 +128,8 @@ d3.json("treeData.json", function(error, treeData) {
 
     // Enter any new modes at the parent's previous position.
     var nodeEnter = node.enter().append('g')
-        .attr('class', 'node')
-        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-        /*.attr("transform", function(d) {
-          return "translate(" + source.x0 + "," + source.y0 + ")";
-      }) */
+      .attr('class', 'node')
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
       .on('click', click)
       .on('mouseover', hover);
 
