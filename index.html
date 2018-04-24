@@ -40,6 +40,9 @@ var margin = {top: 20, right: 90, bottom: 30, left: 60},
 var treemap = d3.tree()
   //.size([height, width])
   .nodeSize([150, 150])
+
+  var nodeHeight = 50,
+      nodeWidth = 100;
   
 // load the external data
 d3.json("treeData.json", function(error, treeData) {
@@ -133,8 +136,8 @@ d3.json("treeData.json", function(error, treeData) {
     nodeEnter.append('rect')
         .attr('class', 'node')
         .attr('r', 1e-6)
-        .attr('width', 100)
-        .attr('height', 50)
+        .attr('width', nodeWidth)
+        .attr('height', nodeHeight)
         .style("fill", function(d) {
             return d._children ? "lightsteelblue" : "#fff";
         });
