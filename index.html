@@ -130,6 +130,8 @@ d3.json("treeData.json", function(error, treeData) {
     var node = svg.selectAll('g.node')
         .data(nodes, function(d) {return d.id || (d.id = ++i); });
 
+    var innerNode = svg.selectAll('g.node').selectAll("rect.node");
+
     // Enter any new modes at the parent's previous position.
     var nodeEnter = node.enter().append('g')
       .attr('class', 'node')
@@ -184,6 +186,20 @@ d3.json("treeData.json", function(error, treeData) {
             return splitData + " " + d.data.predicateList.predicates[0].value
           }
         });
+
+    innerNode.enter().append('text')
+      .attr("dy", "-1em")
+      .attr("x", function(d) {
+            return d.children || d._children ? 50 : 50;
+        })
+      .attr("text-anchor", function(d) {
+            return d.children || d._children ? "end" : "start";
+      })
+      .text(function(d) {
+        if (d.data.name != 0) { 
+          return d.data.scoreDistribution[0].value + "<br>" + d.data.scoreDistribution[1].value
+        }
+      });
 
     // Update the node attributes and style
     nodeUpdate.select('rect.node')
@@ -261,7 +277,7 @@ d3.json("treeData.json", function(error, treeData) {
     function hover(d) {
       if (d.children) {
         d._children = d.children
-        console.log("splitData")
+        console.log(d.data.scoreDistribution)
       } else {
         console.log("no children")
       }
