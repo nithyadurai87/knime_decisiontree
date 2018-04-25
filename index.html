@@ -285,7 +285,7 @@ d3.json("treeData.json", function(error, treeData) {
     function hover(d) {
       if (d.children) {
         d._children = d.children
-        console.log(d.data.scoreDistribution)
+        console.log((d.data.scoreDistribution[0].recordCount + d.data.scoreDistribution[1].recordCount))
       } else {
         console.log("no children")
       }
