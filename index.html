@@ -130,8 +130,6 @@ d3.json("treeData.json", function(error, treeData) {
     var node = svg.selectAll('g.node')
         .data(nodes, function(d) {return d.id || (d.id = ++i); });
 
-    var innerNode = svg.selectAll('g.node').selectAll("rect.node");
-
     // Enter any new modes at the parent's previous position.
     var nodeEnter = node.enter().append('g')
       .attr('class', 'node')
@@ -187,7 +185,7 @@ d3.json("treeData.json", function(error, treeData) {
           }
         });
 
-    innerNode.enter().append('text')
+    nodeEnter.append('text')
       .attr("dy", "-1em")
       .attr("x", function(d) {
             return d.children || d._children ? 50 : 50;
