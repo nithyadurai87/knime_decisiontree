@@ -193,10 +193,11 @@ d3.json("treeData.json", function(error, treeData) {
       .attr("text-anchor", function(d) {
             return d.children || d._children ? "end" : "start";
       })
-      .text(function(d) {
-        if (d.data.name != 0) { 
-          return d.data.scoreDistribution[0].value + "<br>" + d.data.scoreDistribution[1].value
-        }
+      .append('tspan').text(function(d) {
+        return d.data.scoreDistribution[0].value
+      })
+      .append('.tspan').text(function(d) {
+        return d.data.scoreDistribution[1].value
       });
 
     // Update the node attributes and style
