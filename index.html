@@ -188,17 +188,17 @@ d3.json("treeData.json", function(error, treeData) {
     nodeEnter.append('text')
       .attr("dy", "1.8em")
       .attr("x", function(d) {
-        return d.children || d._children ? 50 : 50;
+        return d.children || d._children ? 5 : 5;
       })
       .attr("text-anchor", "start")
       .append('tspan').text(function(d) {
-        return d.data.scoreDistribution[0].value + + ":" + " " + Math.floor(d.data.scoreDistribution[0].recordCount * 100) / 100 + " " + d3.format(".2%")(((((+d.data.scoreDistribution[0].recordCount) / (+d.data.scoreDistribution[0].recordCount + +d.data.scoreDistribution[1].recordCount))) * 100) / 100 )
+        return d.data.scoreDistribution[0].value + ":" + " " + Math.floor(d.data.scoreDistribution[0].recordCount * 100) / 100 + " " + d3.format(".2%")(((((+d.data.scoreDistribution[0].recordCount) / (+d.data.scoreDistribution[0].recordCount + +d.data.scoreDistribution[1].recordCount))) * 100) / 100 )
       });
 
     nodeEnter.append('text')
       .attr("dy", "3.2em")
       .attr("x", function(d) {
-        return d.children || d._children ? 50 : 50;
+        return d.children || d._children ? 5 : 5;
       })
       .attr("text-anchor", "start")
       .append('tspan').text(function(d) {
