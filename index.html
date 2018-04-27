@@ -194,7 +194,7 @@ d3.json("treeData.json", function(error, treeData) {
         return d.children || d._children ? "end" : "start";
       })
       .append('tspan').text(function(d) {
-        return d.data.scoreDistribution[0].value + " " + d.data.scoreDistribution[0].recordCount + " " + (+d.data.scoreDistribution[0].recordCount + +d.data.scoreDistribution[1].recordCount)
+        return d.data.scoreDistribution[0].value + " " + d.data.scoreDistribution[0].recordCount + " " + (((+d.data.scoreDistribution[0].recordCount) / (+d.data.scoreDistribution[0].recordCount + +d.data.scoreDistribution[1].recordCount)) * 100) + " %"
       });
 
     nodeEnter.append('text')
