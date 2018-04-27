@@ -13,7 +13,7 @@ The index.html file contains a basical HTML structure for visualizing the decisi
 
 # Functionality
 
-The demo linked above is an up-to-date reflection of functionality. It supports basic panning and zooming for easy navigation of the decision tree model (needs improvement). Collapsing the tree model is also supported. On clicking a node the split variable is also shown.
+The demo linked above is an up-to-date reflection of functionality. It supports basic panning and zooming for easy navigation of the decision tree model (needs improvement). Collapsing the tree model is also supported. The tree structure provides info on the split variable and also shows relevant split data such as split counts and split percentages.
 
 # To do
 
