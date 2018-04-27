@@ -185,9 +185,6 @@ d3.json("treeData.json", function(error, treeData) {
           }
         });
 
-    var nodeCalc = 0,
-        nodeCalc2 = 0;
-
     nodeEnter.append('text')
       .attr("dy", "1.8em")
       .attr("x", function(d) {
@@ -197,10 +194,7 @@ d3.json("treeData.json", function(error, treeData) {
         return d.children || d._children ? "end" : "start";
       })
       .append('tspan').text(function(d) {
-        nodeCalc += d.data.scoreDistribution[0].recordCount
-        nodeCalc2 += d.data.scoreDistribution[1].recordCount
-        //return d.data.scoreDistribution[0].value + " " + d.data.scoreDistribution[0].recordCount + " " + (((nodeCalc / (nodeCalc + nodeCalc2))) * 100) + "%"
-        return sum(nodeCalc, nodeCalc2)
+        return d.data.scoreDistribution[0].value + " " + d.data.scoreDistribution[0].recordCount + " " + (+d.data.scoreDistribution[0].recordCount + +d.data.scoreDistribution[1].recordCount)
       });
 
     nodeEnter.append('text')
@@ -212,9 +206,7 @@ d3.json("treeData.json", function(error, treeData) {
         return d.children || d._children ? "end" : "start";
       })
       .append('tspan').text(function(d) {
-        //nodeCalc += d.data.scoreDistribution[1].recordCount
-        //nodeCalc2 += d.data.scoreDistribution[0].recordCount
-        //return d.data.scoreDistribution[1].value + " " + d.data.scoreDistribution[1].recordCount + " " + (((nodeCalc / (nodeCalc + nodeCalc2))) * 100) + "%"
+        return d.data.scoreDistribution[1].value + " " + d.data.scoreDistribution[1].recordCount + " " + (+d.data.scoreDistribution[0].recordCount + +d.data.scoreDistribution[1].recordCount)
       });
 
     // Update the node attributes and style
@@ -277,10 +269,6 @@ d3.json("treeData.json", function(error, treeData) {
       d.x0 = d.x;
       d.y0 = d.y;
     });
-
-    function sum(a, b) {
-      return +a + +b
-    }
 
     // Toggle children on click.
     function click(d) {
