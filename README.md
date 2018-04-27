@@ -17,4 +17,8 @@ The demo linked above is an up-to-date reflection of functionality. It supports 
 
 # To do
 
-I am currently working on better pan and zoom functionality. After that I will most likely work on showing more relevant data in the node itself including split counts.
+* Improve panning and zooming
+  * Remove panning
+  * Add more subtle zooming
+* Fix link bug
+  * Prevent links from not showing correctly when not opening first child node
