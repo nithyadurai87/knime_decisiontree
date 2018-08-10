@@ -135,5 +135,5 @@ function predicate2Json(simplePredicate) {
 
 }
 
-fs.writeFyleSync("treeData.json", JSON.stringify(getFlare()))
+fs.writeFileSync("treeData.json", JSON.stringify(getFlare()))
 
